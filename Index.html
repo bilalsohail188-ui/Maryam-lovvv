@@ -1,0 +1,125 @@
+# Maryam-lovvv
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Maryam ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle, #1a001a, #000);
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Text */
+.container {
+  font-size: 28px;
+  text-align: center;
+  max-width: 80%;
+  text-shadow: 0 0 10px #ff4d6d;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  background: #ff4d6d;
+  margin-left: 5px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  color: #ff4d6d;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <span id="text"></span><span class="cursor"></span>
+</div>
+
+<script>
+const lines = [
+  "Hey Maryam... ❤️",
+  "I just want to tell you something...",
+  "You are not just special...",
+  "You are my favorite feeling 💕",
+  "Out of everyone...",
+  "My heart chose YOU 💫",
+  "And I swear Maryam...",
+  "I will always choose you ❤️",
+  "No matter what happens...",
+  "I Love You So Much 💖"
+];
+
+let lineIndex = 0;
+let charIndex = 0;
+const speed = 50;
+const textElement = document.getElementById("text");
+
+function typeLine() {
+  if (charIndex < lines[lineIndex].length) {
+    textElement.innerHTML += lines[lineIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(typeLine, speed);
+  } else {
+    setTimeout(() => {
+      textElement.innerHTML = "";
+      charIndex = 0;
+      lineIndex++;
+      if (lineIndex < lines.length) {
+        typeLine();
+      }
+    }, 1500);
+  }
+}
+
+typeLine();
+
+/* Hearts generator */
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 10 + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
